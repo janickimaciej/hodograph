@@ -123,6 +123,26 @@ void Scene::setOmega(float omega)
 	m_simulation.setOmega(omega);
 }
 
+float Scene::getStdDev() const
+{
+	return m_simulation.getStdDev();
+}
+
+void Scene::setStdDev(float stdDev)
+{
+	m_simulation.setStdDev(stdDev);
+}
+
+bool Scene::getDisturbance() const
+{
+	return m_simulation.getDisturbance();
+}
+
+void Scene::setDisturbance(bool disturbance)
+{
+	m_simulation.setDisturbance(disturbance);
+}
+
 int Scene::getIterations() const
 {
 	return m_simulation.getIterations();
@@ -229,4 +249,24 @@ void Scene::updateCamera()
 	float l = m_simulation.getL();
 	m_minPos = {-margin * r, -margin * r};
 	m_maxPos = {margin * r + l, margin * r};
+
+	float dX = m_maxPos.x - m_minPos.x;
+	float dY = m_maxPos.y - m_minPos.y;
+	float aspectRatio = dX / dY;
+	float viewportAspectRatio = static_cast<float>(m_viewportSize.y) / m_viewportSize.x;
+
+	if (aspectRatio > viewportAspectRatio)
+	{
+		float newDY = dX / viewportAspectRatio;
+		float offset = newDY - dY;
+		m_minPos.y -= offset / 2.0f;
+		m_maxPos.y += offset / 2.0f;
+	}
+	else
+	{
+		float newDX = dY * viewportAspectRatio;
+		float offset = newDX - dX;
+		m_minPos.x -= offset / 2.0f;
+		m_maxPos.x += offset / 2.0f;
+	}
 }

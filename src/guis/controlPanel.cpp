@@ -69,7 +69,19 @@ void ControlPanel::update()
 		0.1f
 	);
 
+	updateValue
+	(
+		[this] () { return m_scene.getStdDev(); },
+		[this] (float stdDev) { m_scene.setStdDev(stdDev); },
+		"standard deviation",
+		0.0f
+	);
+
 	separator();
+
+	bool disturbance = m_scene.getDisturbance();
+	ImGui::Checkbox("Disturbance", &disturbance);
+	m_scene.setDisturbance(disturbance);
 
 	ImGui::Checkbox("Auto fit plots", &m_autoFitPlots);
 

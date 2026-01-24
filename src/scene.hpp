@@ -26,6 +26,10 @@ public:
 	void setL(float l);
 	float getOmega() const;
 	void setOmega(float omega);
+	float getStdDev() const;
+	void setStdDev(float stdDev);
+	bool getDisturbance() const;
+	void setDisturbance(bool disturbance);
 
 	int getIterations() const;
 	float getT() const;

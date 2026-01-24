@@ -16,8 +16,16 @@ void Simulation::update()
 	{
 		float t = m_t.size() * m_dt;
 		m_alpha += m_omega * m_dt;
+
+		float l = m_l;
+		if (m_disturbance)
+		{
+			std::normal_distribution<float> distribution{0, m_stdDev};
+			l += distribution(m_randomGenerator);
+		}
+
 		float x = m_r * std::cos(m_alpha) +
-			std::sqrt(m_l * m_l - m_r * m_r * std::sin(m_alpha) * std::sin(m_alpha));
+			std::sqrt(l * l - m_r * m_r * std::sin(m_alpha) * std::sin(m_alpha));
 
 		m_t.push_back(t);
 		m_x.push_back(x);
@@ -117,6 +125,26 @@ float Simulation::getOmega() const
 void Simulation::setOmega(float omega)
 {
 	m_omega = omega;
+}
+
+float Simulation::getStdDev() const
+{
+	return m_stdDev;
+}
+
+void Simulation::setStdDev(float stdDev)
+{
+	m_stdDev = stdDev;
+}
+
+bool Simulation::getDisturbance() const
+{
+	return m_disturbance;
+}
+
+void Simulation::setDisturbance(bool disturbance)
+{
+	m_disturbance = disturbance;
 }
 
 int Simulation::getIterations() const
