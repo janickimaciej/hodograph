@@ -1,10 +1,12 @@
 #include "scene.hpp"
 
 #include "mesh.hpp"
+#include "shaderPrograms.hpp"
 
 #include <glad/glad.h>
 #include <glm/gtc/constants.hpp>
 
+#include <cmath>
 #include <vector>
 
 static constexpr float fovYDeg = 60.0f;
@@ -48,9 +50,9 @@ void Scene::render() const
 	glClearColor(backgroundColor.r, backgroundColor.g, backgroundColor.b, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	m_shaderProgram.use();
-	m_shaderProgram.setUniform("minPos", m_minPos);
-	m_shaderProgram.setUniform("maxPos", m_maxPos);
+	ShaderPrograms::polyline->use();
+	ShaderPrograms::polyline->setUniform("minPos", m_minPos);
+	ShaderPrograms::polyline->setUniform("maxPos", m_maxPos);
 
 	m_circle->render();
 	m_connection->render();

@@ -1,5 +1,7 @@
 #include "window.hpp"
 
+#include "shaderPrograms.hpp"
+
 #include <string>
 
 Window::Window()
@@ -21,7 +23,8 @@ Window::Window()
 	glEnable(GL_CULL_FACE);
 	glEnable(GL_MULTISAMPLE);
 
-	glViewport(m_viewportPos.x, m_viewportPos.y, m_viewportSize.x, m_viewportSize.y);
+	updateViewport();
+	ShaderPrograms::init();
 }
 
 Window::~Window()
@@ -29,15 +32,9 @@ Window::~Window()
 	glfwTerminate();
 }
 
-glm::ivec2 Window::viewportSize() const
-{
-	return m_viewportSize;
-}
-
-void Window::setWindowData(Scene& scene, GUI& gui)
+void Window::init(Scene& scene)
 {
 	m_scene = &scene;
-	m_gui = &gui;
 }
 
 bool Window::shouldClose() const
@@ -55,7 +52,17 @@ void Window::pollEvents() const
 	glfwPollEvents();
 }
 
+glm::ivec2 Window::viewportSize() const
+{
+	return m_viewportSize;
+}
+
 GLFWwindow* Window::getPtr()
 {
 	return m_windowPtr;
+}
+
+void Window::updateViewport() const
+{
+	glViewport(m_viewportPos.x, m_viewportPos.y, m_viewportSize.x, m_viewportSize.y);
 }

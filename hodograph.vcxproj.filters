@@ -24,6 +24,7 @@
     <ClCompile Include="dep\implot\implot_items.cpp" />
     <ClCompile Include="src\guis\timePlot.cpp" />
     <ClCompile Include="src\guis\stateTrajectoryPlot.cpp" />
+    <ClCompile Include="src\shaderPrograms.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dep\imgui\backends\imgui_impl_glfw.h" />
@@ -47,9 +48,10 @@
     <ClInclude Include="dep\implot\implot_internal.h" />
     <ClInclude Include="src\guis\timePlot.hpp" />
     <ClInclude Include="src\guis\stateTrajectoryPlot.hpp" />
+    <ClInclude Include="src\shaderPrograms.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\shaders\FS.glsl" />
-    <None Include="src\shaders\VS.glsl" />
+    <None Include="src\shaders\polylineFS.glsl" />
+    <None Include="src\shaders\polylineVS.glsl" />
   </ItemGroup>
 </Project>

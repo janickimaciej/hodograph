@@ -2,14 +2,12 @@
 #include "scene.hpp"
 #include "window.hpp"
 
-#include <glm/glm.hpp>
-
 int main()
 {
 	Window window{};
 	Scene scene{window.viewportSize()};
 	GUI gui{window.getPtr(), scene};
-	window.setWindowData(scene, gui);
+	window.init(scene);
 
 	while (!window.shouldClose())
 	{

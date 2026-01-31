@@ -174,6 +174,7 @@
     <ClCompile Include="src\model.cpp" />
     <ClCompile Include="src\scene.cpp" />
     <ClCompile Include="src\shaderProgram.cpp" />
+    <ClCompile Include="src\shaderPrograms.cpp" />
     <ClCompile Include="src\simulation.cpp" />
     <ClCompile Include="src\window.cpp" />
   </ItemGroup>
@@ -197,12 +198,13 @@
     <ClInclude Include="src\model.hpp" />
     <ClInclude Include="src\scene.hpp" />
     <ClInclude Include="src\shaderProgram.hpp" />
+    <ClInclude Include="src\shaderPrograms.hpp" />
     <ClInclude Include="src\simulation.hpp" />
     <ClInclude Include="src\window.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\shaders\FS.glsl" />
-    <None Include="src\shaders\VS.glsl" />
+    <None Include="src\shaders\polylineFS.glsl" />
+    <None Include="src\shaders\polylineVS.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

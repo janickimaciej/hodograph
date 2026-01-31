@@ -1,7 +1,6 @@
 #pragma once
 
 #include "mesh.hpp"
-#include "shaderProgram.hpp"
 #include "simulation.hpp"
 
 #include <glm/glm.hpp>
@@ -39,7 +38,6 @@ public:
 	const float* getAVector() const;
 
 private:
-	ShaderProgram m_shaderProgram{"src/shaders/VS.glsl", "src/shaders/FS.glsl"};
 	glm::ivec2 m_viewportSize{};
 
 	std::unique_ptr<Mesh> m_circle;

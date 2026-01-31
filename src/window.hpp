@@ -13,11 +13,12 @@ public:
 	Window();
 	~Window();
 
-	glm::ivec2 viewportSize() const;
-	void setWindowData(Scene& scene, GUI& gui);
+	void init(Scene& scene);
 	bool shouldClose() const;
 	void swapBuffers() const;
 	void pollEvents() const;
+
+	glm::ivec2 viewportSize() const;
 	GLFWwindow* getPtr();
 
 private:
@@ -27,7 +28,8 @@ private:
 
 	GLFWwindow* m_windowPtr{};
 	Scene* m_scene{};
-	GUI* m_gui{};
 
 	glm::vec2 m_lastCursorPos{};
+
+	void updateViewport() const;
 };
