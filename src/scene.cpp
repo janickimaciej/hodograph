@@ -9,19 +9,13 @@
 #include <cmath>
 #include <vector>
 
-static constexpr float fovYDeg = 60.0f;
-static constexpr float nearPlane = 0.1f;
-static constexpr float farPlane = 1000.0f;
-
-static constexpr float ceilingThickness = 0.2f;
-static constexpr float ceilingSize = 3;
-static constexpr float springFreeLength = 5;
-static constexpr float springThickness = 0.1f;
-static constexpr float weightSize = 1;
-
 Scene::Scene(const glm::ivec2& viewportSize) :
 	m_viewportSize{viewportSize}
 {
+	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_CULL_FACE);
+	glEnable(GL_MULTISAMPLE);
+
 	m_circle = std::make_unique<Mesh>(std::vector<glm::vec2>{});
 	updateCircle();
 	m_connection = std::make_unique<Mesh>(std::vector<glm::vec2>{});
@@ -222,7 +216,7 @@ void Scene::updateBlock()
 void Scene::updateXAxis()
 {
 	std::vector<glm::vec2> vertices{};
-	
+
 	static constexpr float margin = 1.1f;
 	float r = m_simulation.getR();
 	float l = m_simulation.getL();
@@ -235,7 +229,7 @@ void Scene::updateXAxis()
 void Scene::updateYAxis()
 {
 	std::vector<glm::vec2> vertices{};
-	
+
 	static constexpr float margin = 1.1f;
 	float r = m_simulation.getR();
 	vertices.push_back({0, -margin * r});

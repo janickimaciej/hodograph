@@ -5,7 +5,6 @@
 Mesh::Mesh(const std::vector<glm::vec2>& vertices)
 {
 	createVBO(vertices);
-	update(vertices);
 	createVAO();
 }
 
@@ -18,7 +17,7 @@ Mesh::~Mesh()
 void Mesh::render() const
 {
 	glBindVertexArray(m_VAO);
-	glDrawArrays(GL_LINE_STRIP, 0, m_vertexCount);
+	glDrawArrays(GL_LINE_STRIP, 0, static_cast<GLsizei>(m_vertexCount));
 	glBindVertexArray(0);
 }
 
@@ -33,6 +32,7 @@ void Mesh::update(const std::vector<glm::vec2>& vertices)
 void Mesh::createVBO(const std::vector<glm::vec2>& vertices)
 {
 	glGenBuffers(1, &m_VBO);
+	update(vertices);
 }
 
 void Mesh::createVAO()

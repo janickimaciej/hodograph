@@ -16,7 +16,6 @@
     <ClCompile Include="src\scene.cpp" />
     <ClCompile Include="src\guis\gui.cpp" />
     <ClCompile Include="src\mesh.cpp" />
-    <ClCompile Include="src\model.cpp" />
     <ClCompile Include="src\simulation.cpp" />
     <ClCompile Include="src\guis\controlPanel.cpp" />
     <ClCompile Include="dep\implot\implot.cpp" />
@@ -41,7 +40,6 @@
     <ClInclude Include="src\scene.hpp" />
     <ClInclude Include="src\guis\gui.hpp" />
     <ClInclude Include="src\mesh.hpp" />
-    <ClInclude Include="src\model.hpp" />
     <ClInclude Include="src\simulation.hpp" />
     <ClInclude Include="src\guis\controlPanel.hpp" />
     <ClInclude Include="dep\implot\implot.h" />

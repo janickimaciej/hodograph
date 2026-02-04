@@ -16,7 +16,7 @@ public:
 
 	void stop();
 	void start();
-	
+
 	float getDT() const;
 	void setDT(float dt);
 	float getR() const;

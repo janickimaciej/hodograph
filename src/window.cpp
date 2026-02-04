@@ -19,9 +19,6 @@ Window::Window()
 	glfwSwapInterval(1);
 
 	gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress));
-	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_CULL_FACE);
-	glEnable(GL_MULTISAMPLE);
 
 	updateViewport();
 	ShaderPrograms::init();
