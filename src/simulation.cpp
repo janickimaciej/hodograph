@@ -18,7 +18,7 @@ void Simulation::update()
 		m_alpha += m_omega * m_dt;
 
 		float l = m_l;
-		if (m_disturbance)
+		if (m_disturbance && m_stdDev > 0)
 		{
 			std::normal_distribution<float> distribution{0, m_stdDev};
 			l += distribution(m_randomGenerator);
